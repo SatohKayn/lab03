@@ -1,7 +1,9 @@
 package nguyenkyan.demo.enity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
+import nguyenkyan.demo.validator.annotation.ValidCategoryId;
 
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "name")
+    @NotEmpty(message = "Name can't be empty")
     private String name;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<book> books;

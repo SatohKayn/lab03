@@ -57,14 +57,16 @@ public class BookController {
         }
     }
     @PostMapping("/edit")
-    public String editBook(@Valid @ModelAttribute("book")book updateBook, BindingResult bindingResult ){
+    public String editBook(@Valid @ModelAttribute("book")book updateBook, BindingResult bindingResult, Model model ){
         if (bindingResult.hasErrors()){
+            model.addAttribute("categories", categoryService.getAllCategory());
             return "book/edit";
         }
         bookService.getAllBook().stream()
                 .filter(book -> book.getId() == updateBook.getId())
                 .findFirst()
                 .ifPresent(book -> {
+
                     bookService.updateBook(updateBook);
                 });
         return "redirect:/books";

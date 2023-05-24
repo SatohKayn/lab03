@@ -26,7 +26,12 @@ public class CategoryService {
             throw new RuntimeException("Category Not Found");
         }
     }
-
+    public void addCategory(Category newCategory){
+        categoryRepository.save(newCategory);
+    }
     public Category saveCategory(Category category) { return categoryRepository.save(category);}
+    public void updateCategory(Category category){
+        categoryRepository.save(category);
+    }
     public void deleteCategory(Long id) {categoryRepository.deleteById(id);}
 }

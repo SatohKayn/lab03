@@ -29,8 +29,8 @@
     <div class="col-6 mb-3">
       <label class="form-label" for="category">Category:</label>
       <select class="form-control" name="category.id" id="category">
-        <option value="">-- Select Category --</option>
-        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+        <option value="">-- Chọn danh mục --</option>
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" th:selected="${category.id == book.category.id}"></option>
       </select>
       <span class="text-danger" th:if="${#fields.hasErrors('category.id')}" th:errors="*{category}"></span>
     </div>
