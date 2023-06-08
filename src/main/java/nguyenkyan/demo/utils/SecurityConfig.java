@@ -38,13 +38,13 @@ public class SecurityConfig {
 
                         .permitAll()
 
-                        .requestMatchers( "/books/edit", "/books/delete")
+                        .requestMatchers( "/books/edit/**", "/books/delete/**")
 
-                        .authenticated()
+                        .hasAnyAuthority("ADMIN")
 
                         .requestMatchers("/books", "/books/add")
 
-                        .authenticated()
+                        .hasAnyAuthority("ADMIN","USER")
 
                         .anyRequest().authenticated()
 
